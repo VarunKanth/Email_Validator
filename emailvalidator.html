@@ -1,0 +1,74 @@
+﻿    <!doctype html>
+    <html lang="en">
+    <head>
+        <style>
+            .panel {
+                margin: 50px 50px 0 50px;
+                padding: 50px;
+                align-text: center;
+                font-family: Montserrat !important;
+                font-size: 16px;
+            }
+
+            #emailInput {
+                width: 50%;
+                padding: 10px;
+                Outline: none;
+                height: 32px;
+                font-size: 20px;
+                border:
+            }
+
+            #submit-btn {
+                height: 50px;
+                width: 100px;
+                padding: 10px 0 10px 0;
+                background-color: black;
+                color: white;
+                outline: none;                    
+            }
+
+            #valid-result {
+                font-size: 20px;
+            }
+        </style>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <title>Validate Email</title>
+    </head>
+    <body>
+
+        <div class="panel">
+            <h3>Enter the mail address too validate</h3>
+            <p id='emailLabel'>Email Address</p>
+            <input id='emailInput' type="email" />
+            <button id='submit-btn'>Validate</button>
+            <!----input  type='submit' /-->
+            <p id="valid-result"></p>
+        </div>
+
+        <script>
+          document.getElementById("submit-btn").addEventListener("click",validateEmail);
+
+          function validateEmail(){
+          var email = document.getElementById("emailInput").value;
+
+          //var regExp = /^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z]{2,3}){1,2}$/i;
+          var regExp = /^[a-z0-9._%+-]+@[a-z0-9-]+(\.([a-z]{2,3}|shop|business|origami)){1,2}$/i;
+
+          var result = regExp.test(email);           
+
+          if (result == true) {
+            document.getElementById("emailInput").style.border = "1px solid green";
+            document.getElementById("valid-result").innerText = " The email id is valid";
+          }else {
+            document.getElementById("emailInput").style.border = "1px solid red";
+            document.getElementById("valid-result").innerText = " The email id is invalid";
+          }
+
+          }
+        </script>
+    </body>
+    </html>
